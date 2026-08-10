@@ -10,6 +10,8 @@ def data_read():
 def clean_data(df):
     df=df[["distance_km","package_weight_kg","vehicle_type","delivery_cost"]]
     df = df.reset_index(drop=True)
+    df1 = df[["distance_km","package_weight_kg","vehicle_type"]]
+    df2 = df[["delivery_cost"]]
     print(df)
 
     
