@@ -3,9 +3,12 @@ import sys
 import logging
 from scipy.optimize import linprog
 import numpy as np
+import time
+import os
 
-
-df=pd.read_csv(".\soumya\Delivery_Logistics.csv",index_col=0)
+workingDirectory = os.getcwd()
+fullPathCSV = os.path.join(workingDirectory, "Delivery_Logistics.csv")
+df=pd.read_csv(fullPathCSV,index_col=0)
 weight_bins = [0, 10, 25, 40, 50]
 weight_labels = ['0-10kg', '10-25kg', '25-40kg', '40-50kg']
 
@@ -77,15 +80,20 @@ def routing_guide(res, agg_df):
 def main():
     """Main execution function."""
     try:
+        print(workingDirectory)
+        print(fullPathCSV)
         print(df.head())
         print("Starting the model training and evaluation process...")
         print("Step 1: Data Preprocessing and Weighting")
+        time.sleep(5.0)
         weightingUp()
         print("Step 2: Calculations and Optimization")
+        time.sleep(5.0)
         res, agg_df = calculations()
         print("Optimization Result:\n", res)
         print(agg_df.head())
         print("Step 3: Generating Routing Guide")
+        time.sleep(5.0)
         routing_guide_df = routing_guide(res, agg_df)
         print(routing_guide_df.head())
         print("Model training and evaluation completed successfully.")
