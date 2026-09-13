@@ -3,13 +3,16 @@ import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
 import statsmodels.formula.api as smf
+import os
 
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.compose import ColumnTransformer
 from sklearn.cluster import KMeans
 
 # load data set
-df = pd.read_csv(r"C:\Users\SAKSHI\Downloads\TERM 3\CIS\Delivery_Logistics.csv")
+working_directory = os.getcwd()
+fullCSVPath = os.path.join(working_directory, "Delivery_Logistics.csv")
+df = pd.read_csv(fullCSVPath)
 
 # ---------------------------------------------------------------------------
 # Step 1: Recreate freight corridors (same K-Means spec as Kmean.py)

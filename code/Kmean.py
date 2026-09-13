@@ -1,7 +1,8 @@
 import pandas as pd 
 import numpy as np 
 import seaborn as sns
-import matplotlib.pyplot as plt 
+import matplotlib.pyplot as plt
+import os
 
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.compose import ColumnTransformer
@@ -9,7 +10,9 @@ from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
 
 #load data set 
-df = pd.read_csv(r"C:\Users\SAKSHI\Downloads\TERM 3\CIS\Delivery_Logistics.csv")
+working_directory = os.getcwd()
+fullCSVPath = os.path.join(working_directory, "Delivery_Logistics.csv")
+df = pd.read_csv(fullCSVPath)
 
 print("Shape:", df.shape)
 print("\nColumns:")
